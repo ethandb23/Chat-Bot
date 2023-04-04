@@ -107,3 +107,30 @@ form.addEventListener('keyup', (e) => {
     handleSubmit(e);
   }
 });
+
+const memoize = (fn) => {
+  const cache = {};
+  return (...args) => {
+    const key = JSON.stringify(args);
+    if (cache[key]) {
+      return cache[key];
+    }
+    const result = fn(...args);
+    cache[key] = result;
+    return result;
+  };
+};
+
+// Create a memoized version of the fetch function
+const memoizedFetch = memoize(fetch);
+
+// Use the memoized fetch function to make your API requests
+const response = await memoizedFetch('https://codeit-gtgf.onrender.com', {
+  method: 'POST',
+  headers: {
+    'Content-type': 'application/json',
+  },
+  body: JSON.stringify({
+    prompt: data.get('prompt'),
+  }),
+});
