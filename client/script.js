@@ -119,3 +119,71 @@ form.addEventListener('keyup', (e) => {
   }
 }
 )
+
+const handleResponse = async (response) => {
+  if (response.ok) {
+    const data = await response.json();
+    const parsedData = data.bot.trim();
+    typeText(messageDiv, parsedData);
+  } else if (response.status === 429) {
+    console.log("Too many requests. Waiting for 1 second and trying again...");
+    await delay(1000);
+    const response2 = await fetch('https://codeit-gtgf.onrender.com', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify({
+        prompt: data.get('prompt')
+      })
+    });
+    await handleResponse(response2);
+  } else {
+    const err = await response.text();
+    console.log("An error occurred:", err);
+    messageDiv.innerHTML = "Something went wrong";
+    alert(err);
+  }
+}
+
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const data = new FormData(form);
+
+  chatContainter.innerHTML += chatStripe(false, data.get('prompt'));
+
+  form.reset();
+
+  const uniqueID = generatUniqueID();
+  chatContainter.innerHTML += chatStripe(true, " ", uniqueID);
+
+  chatContainter.scrollTop = chatContainter.scrollHeight;
+
+  const messageDiv = document.getElementById(uniqueID);
+
+  loader(messageDiv);
+
+  const response = await fetch('https://codeit-gtgf.onrender.com', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      prompt: data.get('prompt')
+    })
+  });
+
+  clearInterval(loadInterval);
+  messageDiv.innerHTML = '';
+
+  await handleResponse(response);
+}
+
+form.addEventListener('submit', handleSubmit);
+
+form.addEventListener('keyup', (e) => {
+  if (e.keyCode === 13) {
+    handleSubmit(e);
+  }
+});
