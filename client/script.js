@@ -18,15 +18,6 @@ function loader(element) {
   }, 300)
 }
 
-if (response.status === 429) {
-  await delay(1000); // wait for 1 second and try again
-  const response2 = await fetch('https://codeit-gtgf.onrender.com', {
-    // ...
-  });
-  // handle the response
-} else {
-  // handle the response
-};
 
   function typeText(element, text) {
     let index = 0;
