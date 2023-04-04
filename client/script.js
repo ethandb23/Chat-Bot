@@ -45,7 +45,7 @@ function chatStripe (isAI, value, uniqueID) {
     `
     <div class="wrapper ${isAI && 'ai'}">
       <div class="chat">
-        <div className="profile">
+        <div class="profile">
           <img
             src="${isAI ? bot : user}"
             alt="${isAI ? 'bot' : 'user'}"
@@ -80,7 +80,7 @@ const handleSubmit = async (e) => {
 
   
   
-  const response = await fetch('https://codeit-gtgf.onrender.com', {
+  const response = await fetch('https://localhost:5000', {
     method: 'POST',
     headers:
    {

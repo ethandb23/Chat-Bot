@@ -14,13 +14,13 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 const app = express();
-
 app.use(cors());
 app.use(express.json());
 
 app.get('/', async (req, res) => {
     res.status(200).send({
-        message: 'Hello from Codeit',
+      
+        message: 'Hello from CodeIt',
         
     })
 });
@@ -33,9 +33,9 @@ app.post('/', async (req, res) => {
         model: "text-davinci-003",
         prompt: `${prompt}`,
         temperature: 0,
-        max_tokens: 3769,
+        max_tokens: 3000,
         top_p: 1,
-        frequency_penalty: 0.6,
+        frequency_penalty: 0.5,
         presence_penalty: 0,
       });
 
