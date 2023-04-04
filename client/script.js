@@ -18,22 +18,20 @@ function loader(element) {
   }, 300)
 }
 
+function typeText(element, text) {
+  let index = 0;
 
-  function typeText(element, text) {
-    let index = 0;
+  let interval = setInterval(() => {
+    if(index < text.length) {
+      element.innerHTML += text.charAt(index);
+      index++;
+    } else {
+      clearInterval(interval);
+    }
+  }, 20)
+}
 
-    let interval = setInterval(() => {
-      if(index < text.length) {
-        element.innerHTML += text.charAt(index);
-        index++;
-      } else {
-        clearInterval(interval);
-      }
-    }, 20)
-  }
-
-
-function generatUniqueID() {
+function generateUniqueID() {
   const timestamp = Date.now();
   const randomNumber = Math.random();
   const hexadecimalString = randomNumber.toString(16);
@@ -41,25 +39,20 @@ function generatUniqueID() {
   return `id-${timestamp}-${hexadecimalString}`;
 }
 
-function chatStripe (isAI, value, uniqueID) {
-  return (
-    `
+function chatStripe(isAI, value, uniqueID) {
+  return `
     <div class="wrapper ${isAI && 'ai'}">
       <div class="chat">
         <div class="profile">
-          <img
-            src="${isAI ? bot : user}"
-            alt="${isAI ? 'bot' : 'user'}"
-            />
+          <img src="${isAI ? bot : user}" alt="${isAI ? 'bot' : 'user'}" />
+        </div>
+        <div class="message" id=${uniqueID}>${value}</div>
       </div>
-      <div class="message" id=${uniqueID}>${value}</div>
     </div>
-  </div>
-    `
-  )
+  `
 }
 
-const handleSubmit = async (e) => {
+async function handleSubmit(e) {
   e.preventDefault();
 
   const data = new FormData(form);
@@ -70,7 +63,7 @@ const handleSubmit = async (e) => {
   form.reset();
 
   //bot chatstripe
-  const uniqueID = generatUniqueID();
+  const uniqueID = generateUniqueID();
   chatContainter.innerHTML += chatStripe(true, " ", uniqueID);
 
   chatContainter.scrollTop = chatContainter.scrollHeight;
@@ -79,56 +72,8 @@ const handleSubmit = async (e) => {
 
   loader(messageDiv);
 
-  
-
-  
-  const response = await fetch('https://codeit-gtgf.onrender.com', {
-    method: 'POST',
-    headers:
-   {
-      'Content-type': 'application/json'
-   },
-   body: JSON.stringify({
-    prompt: data.get('prompt')
-   })
-  })
-
-  clearInterval(loadInterval);
-  messageDiv.innerHTML = '';
-
-  if(response.ok) {
-    const data = await response.json();
-    const parsedData = data.bot.trim();
-
-
-    typeText(messageDiv, parsedData);
-  } else {
-    const err = await response.text();
-
-
-    messageDiv.innerHTML = "Something went wrong";
-
-    alert(err);
-  }
-}
-
-form.addEventListener('submit', handleSubmit);
-form.addEventListener('keyup', (e) => {
-  if(e.keyCode === 13) {
-    handleSubmit(e);
-  }
-}
-)
-
-const handleResponse = async (response) => {
-  if (response.ok) {
-    const data = await response.json();
-    const parsedData = data.bot.trim();
-    typeText(messageDiv, parsedData);
-  } else if (response.status === 429) {
-    console.log("Too many requests. Waiting for 1 second and trying again...");
-    await delay(1000);
-    const response2 = await fetch('https://codeit-gtgf.onrender.com', {
+  try {
+    const response = await fetch('https://codeit-gtgf.onrender.com', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json'
@@ -137,53 +82,28 @@ const handleResponse = async (response) => {
         prompt: data.get('prompt')
       })
     });
-    await handleResponse(response2);
-  } else {
-    const err = await response.text();
-    console.log("An error occurred:", err);
+
+    clearInterval(loadInterval);
+    messageDiv.innerHTML = '';
+
+    if (response.ok) {
+      const data = await response.json();
+      const parsedData = data.bot.trim();
+      typeText(messageDiv, parsedData);
+    } else {
+      const err = await response.text();
+      messageDiv.innerHTML = "Something went wrong";
+      console.error(err);
+    }
+  } catch (err) {
     messageDiv.innerHTML = "Something went wrong";
-    alert(err);
+    console.error(err);
   }
 }
 
-const handleSubmit = async (e) => {
-  e.preventDefault();
-
-  const data = new FormData(form);
-
-  chatContainter.innerHTML += chatStripe(false, data.get('prompt'));
-
-  form.reset();
-
-  const uniqueID = generatUniqueID();
-  chatContainter.innerHTML += chatStripe(true, " ", uniqueID);
-
-  chatContainter.scrollTop = chatContainter.scrollHeight;
-
-  const messageDiv = document.getElementById(uniqueID);
-
-  loader(messageDiv);
-
-  const response = await fetch('https://codeit-gtgf.onrender.com', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json'
-    },
-    body: JSON.stringify({
-      prompt: data.get('prompt')
-    })
-  });
-
-  clearInterval(loadInterval);
-  messageDiv.innerHTML = '';
-
-  await handleResponse(response);
-}
-
 form.addEventListener('submit', handleSubmit);
-
 form.addEventListener('keyup', (e) => {
-  if (e.keyCode === 13) {
+  if(e.keyCode === 13) {
     handleSubmit(e);
   }
 });
