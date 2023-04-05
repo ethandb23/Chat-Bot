@@ -1,4 +1,5 @@
  <h1>CodeIt</h1>
+ 
     <pThis coding assistant app is a powerful tool for developers, as it is powered by an AI chatbot that utilizes the OpenAI API. The chatbot is designed to provide users with personalized code suggestions, bug fixes, and syntax corrections in real-time, which can help streamline the coding process and increase productivity.</p>
 
 <h2>Getting Started</h2>
@@ -13,7 +14,9 @@
 <p>This will compile the code and start a local server at <a href="http://localhost:3000/">http://localhost:3000/</a>.</p>
 <p>Finally, open your preferred web browser and navigate to <a href="http://localhost:3000/">http://localhost:3000/</a>. This will open the index.html file and display the application.</p>
 
-<h2>About the Project</h2>
+<h2>About</h2>
+
+
 <p>This was a solo project completed during a 1-week sprint.</p>
 <h3>Technologies Used</h3>
 <ul>
@@ -24,80 +27,105 @@
   <li>CRESTful API/li>
 </ul>
 
-### This coding assistant app is a powerful tool for developers, as it is powered by an AI chatbot that utilizes the OpenAI API. The chatbot is designed to provide users with personalized code suggestions, bug fixes, and syntax corrections in real-time, which can help streamline the coding process and increase productivity.
+<p>This coding assistant app is a powerful tool for developers, as it is powered by an AI chatbot that utilizes the OpenAI API. The chatbot is designed to provide users with personalized code suggestions, bug fixes, and syntax corrections in real-time, which can help streamline the coding process and increase productivity.</p>
 
-### One of the key benefits of this app is its user-friendliness, as it is designed to be intuitive and easy to use. Users can easily integrate the app into their existing programming environment, which means they can start using it right away without having to switch between multiple applications.
+<p>One of the key benefits of this app is its user-friendliness, as it is designed to be intuitive and easy to use. Users can easily integrate the app into their existing programming environment, which means they can start using it right away without having to switch between multiple applications.</p>
 
-### The AI chatbot is trained on a vast dataset of programming languages and frameworks, which means it can provide assistance across a wide range of development projects. It can also learn from user feedback, which means it can continue to improve over time and provide even more accurate and helpful suggestions.
+<p>The AI chatbot is trained on a vast dataset of programming languages and frameworks, which means it can provide assistance across a wide range of development projects. It can also learn from user feedback, which means it can continue to improve over time and provide even more accurate and helpful suggestions.</p>
 
-### In addition to providing personalized code suggestions, the app also has the ability to help with debugging by identifying and suggesting fixes for common coding errors. This can be a huge time-saver for developers, as it can help them quickly identify and resolve issues before they become major problems.
+<p>In addition to providing personalized code suggestions, the app also has the ability to help with debugging by identifying and suggesting fixes for common coding errors. This can be a huge time-saver for developers, as it can help them quickly identify and resolve issues before they become major problems.</p>
 
-### Overall, this coding assistant app is an invaluable tool for developers looking to improve their coding efficiency and productivity. With its powerful AI chatbot and user-friendly design, it is sure to be a popular choice among developers of all levels
+<p>Overall, this coding assistant app is an invaluable tool for developers looking to improve their coding efficiency and productivity. With its powerful AI chatbot and user-friendly design, it is sure to be a popular choice among developers of all levels</p>
 
 
+<p>During the planning stage, I began with pseudocode</p>
 
-    <p>During the planning stage, I began with pseudocode</p>
-    <pre><code>function handleUserInput(userInput) {
+<p>
+
+function handleUserInput(userInput) {
   // Send the user input to the OpenAI API
   const response = sendToOpenAI(userInput);
-
+</p>
+<p>
   // Display the response in the chat window
   displayResponse(response);
 }
-
+</p>
+<p>
 // Set up a function to send user input to the OpenAI API
 function sendToOpenAI(userInput) {
+ </p>
+ <p>
   // Create a request object with the user input
   const request = {
     input: userInput,
+    </p>
+    <p>
     // Set any additional parameters for the request
     parameters: {
-      // For example, set the model to use
+    </p>
+    <p>
+    // For example, set the model to use
       model: 'davinci'
     }
   };
-
+</p>
+<p>
   // Send the request to the OpenAI API
   const response = makeRequest(request);
-
+</p>
+<p>
   // Return the response from the API
   return response;
 }
+</p>
 
+<p>
 // Set up a function to make requests to the OpenAI API
 function makeRequest(request) {
+ </p>
+ <p>
   // Use a library like Axios to send the request to the API endpoint
   const response = axios.post('https://api.openai.com/v1/engines/davinci-completion/completions', request);
-
+</p>
+<p>
   // Extract the relevant information from the response and return it
   return response.data.choices[0].text;
 }
-
+</p>
+<p>
 // Set up a function to display the chatbot's response in the chat window
 function displayResponse(response) {
+ </p> 
+  <p>
   // Get the chat window element
   const chatWindow = document.querySelector('#chat-window');
-
+</p>
+<p>
   // Create a new chat bubble element with the response text
   const bubble = document.createElement('div');
   bubble.classList.add('chat-bubble');
   bubble.textContent = response;
+</p>
 
+<p>
   // Add the chat bubble to the chat window
   chatWindow.appendChild(bubble);
 }
-
+</p>
+<p>
 // Set up event listeners to handle user input
 const userInput = document.querySelector('#user-input');
 userInput.addEventListener('keydown', (event) => {
+ </p> 
+ <p>
   // If the user presses Enter, send their input to the chatbot
   if (event.key === 'Enter') {
     handleUserInput(userInput.value);
     userInput.value = '';
   }
 });
-
-</code>
+</p>
 
 
 
@@ -106,17 +134,10 @@ userInput.addEventListener('keydown', (event) => {
 <p>This is a block of JavaScript code that handles the submission of a form that enables users to chat with a bot. Here is a step-by-step explanation of the code:</p>
 
 
-
-
-
-
-
-
-
 <pre><code>
 function loader(element) {
   element.textContent = '';
-</code>
+</pre></code>
 
 <p>The loader function receives an HTML element as an argument and starts a setInterval function that adds a period to the element's text content every 300 milliseconds until the text content is '....'. Once the text content is '....', the function clears the interval and sets the text content of the element to an empty string.</p>
 
@@ -129,8 +150,10 @@ function loader(element) {
     }
   }, 300)
 }
-</code>
+</pre></code>
+
 <p>The typeText function receives an HTML element and a string of text as arguments. It sets an index variable to 0 and starts a setInterval function that adds one character of the string of text to the element's innerHTML every 20 milliseconds until the end of the string is reached. Once the end of the string is reached, the function clears the interval.</p>
+
 <pre><code>
   function typeText(element, text) {
     let index = 0;
@@ -143,9 +166,10 @@ function loader(element) {
         clearInterval(interval);
       }
     }, 20)
-  } </code>
-<p>
-The generatUniqueID function generates a unique ID for a chat stripe using the current timestamp and a random hexadecimal number.</p>
+  } 
+  </pre></code>
+  
+<p>The generatUniqueID function generates a unique ID for a chat stripe using the current timestamp and a random hexadecimal number.</p>
 
 <pre><code>
 function generatUniqueID() {
@@ -154,41 +178,31 @@ function generatUniqueID() {
   const hexadecimalString = randomNumber.toString(16);
 
   return `id-${timestamp}-${hexadecimalString}`;
-}</code>
+}
+</pre></code>
 
 <p>The chatStripe function returns a string of HTML that represents a chat stripe. The function receives three arguments: a boolean value that indicates whether the stripe is for the bot or the user, a string of text that represents the message to be displayed in the stripe, and a unique ID for the stripe.</p>
-<pre><code>
-function chatStripe (isAI, value, uniqueID) {
-  return (
-    `
-    <div class="wrapper ${isAI && 'ai'}">
-      <div class="chat">
-        <div className="profile">
-          <img
-            src="${isAI ? bot : user}"
-            alt="${isAI ? 'bot' : 'user'}"
-            />
-      </div>
-      <div class="message" id=${uniqueID}>${value}</div>
-    </div>
-  </div>
-    `
-  )
-}
-</code>
+
+
 <p>The handleSubmit function is an asynchronous function that is called when the form is submitted. It prevents the default form submission behavior, gets the user's input from the form, creates a new chat stripe for the user's input, clears the form, creates a new chat stripe for the bot's response with a unique ID generated by the generatUniqueID function, scrolls the chat container to the bottom, and starts the loader function to display loading dots in the bot's chat stripe. It then makes a POST request to the server at the specified URL with the user's input as a JSON object. If the response is OK, it parses the response data, clears the loading dots, and types the bot's response in the bot's chat stripe using the typeText function. If the response is not OK, it displays an error message.</p>
+
 <pre><code>
 const handleSubmit = async (e) => {
   e.preventDefault();
 
   const data = new FormData(form);
+  </pre></code>
 
-  // user's chatstripe
+  </p>// user's chatstripe</p>
+  <pre><code>
   chatContainter.innerHTML += chatStripe(false, data.get('prompt'));
 
   form.reset();
+</pre></code>
 
-  //bot chatstripe
+  <p>//bot chatstripe</p>
+  
+  <pre><code>
   const uniqueID = generatUniqueID();
   chatContainter.innerHTML += chatStripe(true, " ", uniqueID);
 
@@ -237,12 +251,13 @@ form.addEventListener('keyup', (e) => {
   }
 }
 )
-</code>
+</pre></code>
+
 <p>The last two lines of the code add event listeners to the form for the 'submit' and 'keyup' events. When the user presses the 'Enter' key, the handleSubmit function is called. </p>
 
 
 
-# Challenges
+<h2>Challenges</h2>
 
 <p>During the course of the project, one of the biggest obstacles I had to overcome was implementing cors correctly so that I could utilize the API. CORS, or Cross-Origin Resource Sharing, is a security feature of web browsers that restricts web pages from making requests to a different domain than the one that served the web page. This can often be a challenge when working with APIs, as the data that the API provides is often hosted on a different server than the one the application is running on. I had to ensure that the API was properly configured to allow our application to access its resources, which required us to configure our application to include the appropriate CORS headers. After much trial and error, I were eventually able to implement CORS properly and utilize the API to its full potential, which was a major accomplishment.</p>
 
