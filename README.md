@@ -1,6 +1,6 @@
  <h1>CodeIt</h1>
  
-    <pThis coding assistant app is a powerful tool for developers, as it is powered by an AI chatbot that utilizes the OpenAI API. The chatbot is designed to provide users with personalized code suggestions, bug fixes, and syntax corrections in real-time, which can help streamline the coding process and increase productivity.</p>
+    <p>This coding assistant app is a powerful tool for developers, as it is powered by an AI chatbot that utilizes the OpenAI API. The chatbot is designed to provide users with personalized code suggestions, bug fixes, and syntax corrections in real-time, which can help streamline the coding process and increase productivity.</p>
 
 <h2>Getting Started</h2>
 <p>Clone the GitHub repository to your local machine by executing the following command in your terminal:</p>
