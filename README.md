@@ -27,6 +27,8 @@
   <li>RESTful API</li>
 </ul>
 
+
+
 <p>This coding assistant app is a powerful tool for developers, as it is powered by an AI chatbot that utilizes the OpenAI API. The chatbot is designed to provide users with personalized code suggestions, bug fixes, and syntax corrections in real-time, which can help streamline the coding process and increase productivity.</p>
 
 <p>One of the key benefits of this app is its user-friendliness, as it is designed to be intuitive and easy to use. Users can easily integrate the app into their existing programming environment, which means they can start using it right away without having to switch between multiple applications.</p>
@@ -37,7 +39,7 @@
 
 <p>Overall, this coding assistant app is an invaluable tool for developers looking to improve their coding efficiency and productivity. With its powerful AI chatbot and user-friendly design, it is sure to be a popular choice among developers of all levels</p>
 
-
+<h2>Planning</h2>
 <p>During the planning stage, I began with pseudocode</p>
 
 <p>
@@ -127,6 +129,8 @@ userInput.addEventListener('keydown', (event) => {
 });
 </p>
 
+
+<h2>Build Process</h2>
 
 
 <p>My code process involved integrating the OpenAI API into the app and developing the logic for providing personalized code suggestions, bug fixes, and syntax corrections. My app was developed using JavaScript and React, and Bootstrap was used to style the user interface. I tested using various programming environments and programming languages, and feedback was gathered from users to refine the app's functionality. The app was then optimized for performance and speed  </p>
