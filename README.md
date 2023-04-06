@@ -24,7 +24,7 @@
   <li>CSS</li>
   <li>JavaScript</li>
   <li>Bootstrap</li>
-  <li>CRESTful API/li>
+  <li>RESTful API</li>
 </ul>
 
 <p>This coding assistant app is a powerful tool for developers, as it is powered by an AI chatbot that utilizes the OpenAI API. The chatbot is designed to provide users with personalized code suggestions, bug fixes, and syntax corrections in real-time, which can help streamline the coding process and increase productivity.</p>
